@@ -237,8 +237,7 @@ if cap.isOpened():
                     cv.putText(frame, str(no_of_fingers), (100, 100), cv.FONT_HERSHEY_SIMPLEX, 1, (255,0,0), 2, cv.LINE_AA)
 
 
-                    ## ogarnac temat rysowania, bo to jakis koszmar xD
-                    # zaczyna punkt w srodku i przemieszczanie inkrementacyjne
+                    ## rysowanie punktu o danym kolorze
                     if 'rysowanie' not in locals():
                         rysowanie = np.zeros_like(frame)
                     cv.rectangle(rysowanie, (50, 25), (70, 55), (0, 0, 0), -1)
@@ -250,7 +249,7 @@ if cap.isOpened():
 
                     if iteratorek > 3:
                         if zmianyLiczbyPalcow == 0:
-                            # ruchoma srednia
+                            # ruchoma srednia w celu spowolnienia zmian i zachowania plynnosci
                             srodek_okregu = [int(0.3*circle_cen[1] +0.7*srodek_okregu[0]), int(0.3*circle_cen[0] + 0.7*srodek_okregu[1])]
 
                             if no_of_fingers == 0:
